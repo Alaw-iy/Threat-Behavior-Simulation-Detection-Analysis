@@ -1,0 +1,22 @@
+// Microsoft Defender for Endpoint / Sentinel Unified Simulation Detection
+(
+    DeviceProcessEvents
+    | where FolderPath has @"C:\Lab-Defensivo" and FileName =~ "simulated_payload.exe"
+    | project TimeGenerated, DeviceName, ActionType, InitiatingProcessFileName, FileName, ProcessCommandLine, Evidence = ProcessCommandLine
+)
+union (
+    DeviceFileEvents
+    | where FolderPath has @"C:\Lab-Defensivo" and FileName =~ "simulated_config.txt"
+    | project TimeGenerated, DeviceName, ActionType, InitiatingProcessFileName, FileName, ProcessCommandLine = "", Evidence = FolderPath
+)
+union (
+    DeviceRegistryEvents
+    | where RegistryKey has @"SOFTWARE\SimulationTestCompany" and RegistryValueName == "SimulatedRunKey"
+    | project TimeGenerated, DeviceName, ActionType, InitiatingProcessFileName, FileName = "", ProcessCommandLine = "", Evidence = RegistryValueName
+)
+union (
+    DeviceNetworkEvents
+    | where RemoteIP == "127.0.0.1" and RemotePort == 135
+    | project TimeGenerated, DeviceName, ActionType, InitiatingProcessFileName, FileName = "", ProcessCommandLine = "", Evidence = strcat(RemoteIP, ":", RemotePort)
+)
+| sort by TimeGenerated desc
