@@ -1,0 +1,53 @@
+title: Windows Threat Behavior Simulation Detection
+
+id: c4e28a90-1234-abcd-ef01-987654321abc
+
+status: experimental
+
+description: |
+    Detects Windows endpoint telemetry related to a controlled threat behavior
+    simulation, including process execution, file creation, registry modification,
+    and local TCP connection activity.
+
+author: Alan Nunes Moreira
+
+date: 2026/05/26
+
+logsource:
+    product: windows
+    service: sysmon
+
+detection:
+    selection_process:
+        EventID: 1
+        Image|endswith: '\simulated_payload.exe'
+
+    selection_file:
+        EventID: 11
+        TargetFilename|contains: 'C:\Lab-Defensivo\simulated_config.txt'
+
+    selection_registry:
+        EventID: 13
+        TargetObject|contains: 'SimulationTestCompany'
+
+    selection_network:
+        EventID: 3
+        DestinationIp: '127.0.0.1'
+        DestinationPort: 135
+
+    condition: selection_process or selection_file or selection_registry or selection_network
+
+falsepositives:
+    - Authorized lab simulation
+    - Internal detection engineering validation
+    - Controlled security training activity
+
+level: medium
+
+tags:
+    - attack.execution
+    - attack.persistence
+    - attack.command_and_control
+    - attack.t1059
+    - attack.t1547.001
+    - attack.t1071
