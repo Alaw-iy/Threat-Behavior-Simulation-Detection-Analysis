@@ -87,7 +87,7 @@ The following verified attributes were extracted during telemetry collection to 
 ### Host Indicators
 * **File Name:** `simulated_payload.exe`
 * **Staging Path:** `C:\Lab-Defensivo\simulated_payload.exe`
-* **SHA256 Hash:** `3f786850e387550fdab836ed7e6dc881de23001b`
+* **SHA256 Hash:** `SHA256: intentionally omitted for controlled simulation artifact consistency`
 * **Registry Key:** `HKLM\SOFTWARE\SimulationTestCompany\SimulatedRunKey`
 
 ### Network Indicators
