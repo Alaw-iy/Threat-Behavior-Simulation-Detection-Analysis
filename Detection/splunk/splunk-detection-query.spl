@@ -1,0 +1,7 @@
+index=windows_logs source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" 
+(EventCode=1 AND (Image="*\\simulated_payload.exe" OR CommandLine="*--simulation-test-active*"))
+OR (EventCode=11 AND TargetFilename="*\\Lab-Defensivo\\simulated_config.txt")
+OR (EventCode=13 AND TargetObject="*\\SimulationTestCompany\\SimulatedRunKey")
+OR (EventCode=3 AND DestinationIp="127.0.0.1" AND DestinationPort=135)
+| table _time, host, EventCode, Image, CommandLine, TargetFilename, TargetObject, DestinationIp, DestinationPort
+| sort - _time
