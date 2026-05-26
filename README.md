@@ -15,8 +15,8 @@ The simulation replicates a classic post-exploitation lifestyle: initial process
 | :--- | :--- | :--- | :--- | :--- |
 | Binary execution from untrusted path | **T1059** - Command & Scripting Interpreter | Sysmon Event ID 1 | **Medium** | `simulated_payload.exe` |
 | Dropping configuration files to disk | **T1105** - Ingress Tool Transfer | Sysmon Event ID 11 | **Medium** | `simulated_config.txt` |
-| Registry manipulation for persistence | **T1547.001** - Registry Run Keys | Sysmon Event ID 13 | **High** | `SimulationTestCompany` |
-| Outbound local socket beaconing | **T1071** - Application Layer Protocol | Sysmon Event ID 3 | **High** | Port `135` over `127.0.0.1` |
+| Registry manipulation for persistence | **T1547.001** - Registry Run Keys | Sysmon Event ID 13 | **Medium** | `SimulationTestCompany` |
+| Outbound local socket beaconing | **T1071** - Application Layer Protocol | Sysmon Event ID 3 | **Medium** | Port `135` over `127.0.0.1` |
 
 ---
 
