@@ -1,0 +1,6 @@
+indicator,type,description,severity
+simulated_payload.exe,File_Name,Simulated execution artifact name,medium
+3f786850e387550fdab836ed7e6dc881de23001b,SHA256,Simulated file execution fingerprint,medium
+127.0.0.1,IPv4,Simulated lab loopback interface network destination,high
+135,Port,Simulated listening RPC service connection port,high
+SimulationTestCompany,Registry_Key,Value pointer monitoring custom persistence registry path,high
