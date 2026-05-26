@@ -1,0 +1,42 @@
+title: PowerShell TCP Client Connection Attempt
+
+id: 6f4a9c2e-8b31-4f6a-9d21-7c9a1e2b8f44
+
+status: experimental
+
+description: |
+    Detects PowerShell execution that attempts to create a TCP client connection
+    using the .NET System.Net.Sockets.TcpClient class.
+
+author: Alan Nunes Moreira
+
+date: 2026/05/26
+
+logsource:
+    product: windows
+    service: sysmon
+
+detection:
+    selection_powershell_tcpclient:
+        EventID: 1
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+        CommandLine|contains|all:
+            - 'System.Net.Sockets.TcpClient'
+            - 'BeginConnect'
+
+    condition: selection_powershell_tcpclient
+
+falsepositives:
+    - Authorized PowerShell network testing
+    - Internal lab validation
+    - Administrative scripts that test TCP connectivity
+
+level: medium
+
+tags:
+    - attack.execution
+    - attack.command_and_scripting_interpreter
+    - attack.t1059
+    - attack.t1059.001
