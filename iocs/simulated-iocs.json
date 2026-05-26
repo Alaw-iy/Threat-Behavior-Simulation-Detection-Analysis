@@ -1,0 +1,32 @@
+[
+  {
+    "indicator": "simulated_payload.exe",
+    "type": "File_Name",
+    "description": "Simulated execution artifact name",
+    "severity": "medium"
+  },
+  {
+    "indicator": "3f786850e387550fdab836ed7e6dc881de23001b",
+    "type": "SHA256",
+    "description": "Simulated file execution fingerprint",
+    "severity": "medium"
+  },
+  {
+    "indicator": "127.0.0.1",
+    "type": "IPv4",
+    "description": "Simulated lab loopback interface network destination",
+    "severity": "high"
+  },
+  {
+    "indicator": "135",
+    "type": "Port",
+    "description": "Simulated listening RPC service connection port",
+    "severity": "high"
+  },
+  {
+    "indicator": "SimulationTestCompany",
+    "type": "Registry_Key",
+    "description": "Value pointer monitoring custom persistence registry path",
+    "severity": "high"
+  }
+]
