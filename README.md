@@ -18,6 +18,20 @@ The simulation replicates a classic post-exploitation lifestyle: initial process
 | Registry manipulation for persistence | **T1547.001** - Registry Run Keys | Sysmon Event ID 13 | **Medium** | `SimulationTestCompany` |
 | Outbound local socket beaconing | **T1071** - Application Layer Protocol | Sysmon Event ID 3 | **Medium** | Port `135` over `127.0.0.1` |
 
+## Architecture Overview
+
+The lab follows a simple endpoint detection workflow:
+
+1. A controlled behavior simulation runs on a Windows 11 lab machine.
+2. Sysmon captures process, network, file and registry events.
+3. The collected telemetry is reviewed through detection artifacts.
+4. Sigma, KQL, Splunk and YARA logic support the analysis.
+5. Findings are documented through an incident timeline, IOC list and technical report.
+
+Architecture diagram:
+
+[View architecture diagram](docs/architecture/architecture-diagram.md)
+
 ---
 
 ## 3. Lab Environment & Architecture
