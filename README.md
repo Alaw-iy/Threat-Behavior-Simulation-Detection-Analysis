@@ -1,4 +1,4 @@
-# Malware Simulation & Threat Detection Log Analysis
+# Threat Behavior Simulation & Detection Analysis
 
 ## 1. Project Overview
 This project documents a controlled, non-malicious behavior simulation conducted within an isolated Windows 11 enterprise laboratory. The primary objective is to demonstrate a Blue Team investigative mindset by capturing endpoint telemetry, mapping actions to the MITRE ATT&CK framework, and engineering actionable detection logic (Sigma, YARA, Splunk, KQL).
