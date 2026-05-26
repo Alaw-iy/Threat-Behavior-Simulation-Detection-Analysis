@@ -1,6 +1,27 @@
-indicator,type,description,severity
-simulated_payload.exe,File_Name,Simulated execution artifact name,medium
-3f786850e387550fdab836ed7e6dc881de23001b,SHA256,Simulated file execution fingerprint,medium
-127.0.0.1,IPv4,Simulated lab loopback interface network destination,high
-135,Port,Simulated listening RPC service connection port,high
-SimulationTestCompany,Registry_Key,Value pointer monitoring custom persistence registry path,high
+## Indicators of Compromise (IoCs)
+
+The following indicators were observed during the controlled threat behavior simulation.
+
+### Host Indicators
+
+| Type | Indicator | Description |
+|------|-----------|-------------|
+| Process | powershell.exe | PowerShell execution used for simulated TCP connection behavior |
+| File | C:\Lab-Defensivo\simulated_config.txt | Marker file created during the simulation |
+| Registry | HKCU\Software\SimulationTestCompany | Simulated registry artifact for detection validation |
+
+### Network Indicators
+
+| Type | Indicator | Description |
+|------|-----------|-------------|
+| Destination IP | 127.0.0.1 | Localhost connection used for safe network behavior simulation |
+| Destination Port | 135 | RPC endpoint selected for controlled TCP connection testing |
+
+### Behavioral Indicators
+
+| Behavior | Description |
+|---------|-------------|
+| PowerShell TCP Client Creation | PowerShell instantiated a .NET TcpClient object |
+| Local TCP Connection Attempt | BeginConnect() used to generate network telemetry |
+| Registry Modification | Simulated registry artifact created |
+| File Creation | Marker file written to disk |
