@@ -80,7 +80,7 @@ The following verified attributes were extracted during telemetry collection to 
 * **Destination IP:** `127.0.0.1` (Localhost Loopback validation)
 * **Destination Port:** `135 / TCP`
 
-![IoC Hash Verification](screenshots/06-ioc-hash-validation.png)
+![IoC Hash Verification](screenshots/06-sigma-rule-detection.png)
 *Figure 6: Cryptographic SHA256 validation of the laboratory executable file.*
 
 ---
@@ -90,7 +90,7 @@ The following verified attributes were extracted during telemetry collection to 
 ### 🟢 Sigma Rule (SIEM Agnostic Behavior Matching)
 Located at: `detection/sigma/simulated-malware-detection.yml`
 ```yaml
-title: Suspicious Simulation Registry Manipulation Pattern
+title: Suspicious Simulation Registry and Process Behavioral Pattern
 id: c4e28a90-1234-abcd-ef01-987654321abc
 status: experimental
 description: Detects registry creation/modification parameters linked to the controlled lab security simulation profile.
