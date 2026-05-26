@@ -3,12 +3,19 @@
 ## 1. Project Overview
 This project documents a controlled, non-malicious behavior simulation conducted within an isolated Windows 11 enterprise laboratory. The primary objective is to demonstrate a Blue Team investigative mindset by capturing endpoint telemetry, mapping actions to the MITRE ATT&CK framework, and engineering actionable detection logic (Sigma, YARA, Splunk, KQL).
 
-> **⚠️ Operational Security Note:** This repository does not contain malicious payloads, anti-virus bypasses, or destructive code. All simulation steps utilize benign system utilities and mock administrative configurations to safely generate realistic telemetric noise for educational and defensive triage analysis.
+> **⚠️ Operational Security Note:** This repository does not contain malicious payloads, anti-virus bypasses, or destructive code. All simulation steps utilize benign system utilities and mock administrative configurations to safely generate realistic system activity for educational and defensive triage analysis.
 
 ---
 
 ## 2. Executive Summary
-The simulation replicates a classic post-exploitation lifestyle: initial process execution, staging a secondary configuration file to disk, establishing persistence mechanisms, and initiating outbound network beacons. 
+
+This project documents a controlled Windows threat behavior simulation built to validate endpoint detection and analysis workflows.
+
+The lab generated telemetry through PowerShell execution, file creation, registry modification, and local network activity.
+
+Sysmon was used to collect Windows event data, which was then reviewed through Sigma detection logic, IOC documentation, and incident reporting.
+
+The objective was to demonstrate practical Blue Team skills in telemetry analysis, detection engineering, and incident documentation.
 
 ### Telemetry & Framework Mapping Matrix
 | Observed Behavior | MITRE ATT&CK Mapping | Log Source | Severity | Target Object / Context |
@@ -59,7 +66,7 @@ A replica payload binary (`simulated_payload.exe`) was staged and executed via a
 *Figure 2: Sysmon capturing process creation details and cryptographic hashes for the executing binary.*
 
 ### 4.2 File Creation (Event ID 11)
-The process triggered the generation of a static configuration artifact (`simulated_config.txt`) inside the dedicated laboratory working directory.
+The process triggered the generation of a static configuration observed system behavior (`simulated_config.txt`) inside the dedicated laboratory working directory.
 * **Monitored Fields:** `TargetFilename`, `CreationUtcTime`, `Image`.
 
 ![File Creation Telemetry](screenshots/03-sysmon-event-id-11-file-created.png)
@@ -109,7 +116,7 @@ detection/sigma/powershell-tcpclient-connection.yml`
 title: Suspicious Simulation Registry and Process Behavioral Pattern
 id: c4e28a90-1234-abcd-ef01-987654321abc
 status: experimental
-description: Detects registry creation/modification parameters linked to the controlled lab security simulation profile.
+description: Detects registry creation/modification parameters linked to the controlled threat behavior simulation.
 author: Alan Nunes Moreira
 date: 2026/05/26
 logsource:
