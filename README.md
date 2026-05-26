@@ -87,8 +87,10 @@ The following verified attributes were extracted during telemetry collection to 
 
 ## 6. Detection Engineering Artifacts
 
-### 🟢 Sigma Rule (SIEM Agnostic Behavior Matching)
-Located at: `detection/sigma/simulated-malware-detection.yml`
+### 🟢 Sigma Detection Rules
+This project includes two Sigma rules. The first rule detects the main lab behavior across Sysmon Event IDs 1, 3, 11 and 13. The second rule focuses on PowerShell-based TCP client activity observed during the network simulation step.
+Located at: `detection/sigma/windows-threat-behavior-detection.yml &
+detection/sigma/powershell-tcpclient-connection.yml`
 ```yaml
 title: Suspicious Simulation Registry and Process Behavioral Pattern
 id: c4e28a90-1234-abcd-ef01-987654321abc
@@ -107,4 +109,4 @@ detection:
     condition: selection
 falsepositives:
     - Controlled sandbox engineering exercises.
-level: high
+level: medium
